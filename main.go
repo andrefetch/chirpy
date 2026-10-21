@@ -8,14 +8,14 @@ import (
 
 func main() {
 
-	port := ":8080"
+	port := "8080"
 
 	fileServer := http.FileServer(http.Dir("."))
 
 	mux := http.NewServeMux()
 	mux.Handle("/", fileServer)
-	server := http.Server{
-		Addr:    port,
+	server := &http.Server{
+		Addr:    ":" + port,
 		Handler: mux,
 	}
 
